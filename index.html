@@ -152,7 +152,7 @@
   </div>
 
   <!-- Música de fondo -->
-  <audio id="bg-music" autoplay loop>
+  <audio id="bg-music" loop>
     <source src="vitamina.mp3" type="audio/mp3">
     Tu navegador no soporta audio en HTML5.
   </audio>
@@ -162,13 +162,16 @@
     const envelope = document.getElementById("envelope");
     const music = document.getElementById("bg-music");
 
-    scene.addEventListener("click", () => {
-      envelope.classList.add("open");
-      music.play(); // fuerza a reproducir cuando se abre la carta
+   scene.addEventListener("click", () => {
+    envelope.classList.add("open");
+    music.play().catch(err => {
+      console.log("El navegador bloqueó la música:", err);
     });
-  </script>
+  });
+</script>
 </body>
 </html>
+
 
 
 
